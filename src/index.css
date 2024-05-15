@@ -1,13 +1,115 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+:root{
+  --bg-color: darkcyan;
+  --secondary-color: rgb(0, 177, 177);
+  --main-text-color: rgb(239, 255, 255);
+  --foot-text-color: rgb(0, 117, 117);
+  --chap-text-color: rgb(0, 87, 87);
+  --border-color: rgb(0, 87, 87);
+ 
+  --spacing-medium: 1rem;
+  --spacing-large: 1.1875rem;
+  --border-radius-default: 0.5rem;
+  --color-borders-hairline: rgb(0, 87, 87);
+
+  --color-borders-highlight: rgb(0, 177, 177);
+  --color-highlight: rgb(255, 255, 255);
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  
+  float: none;
 }
+
+.app {
+  font-family: 'Fredoka';
+  background-color:var(--bg-color);
+  /*background: linear-gradient(180deg, var(--bg-color) 0%, rgb(0,110, 110) 100%);*/
+}
+
+.table{
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 4fr);
+  /*grid-gap: var(--spacing-small);
+  gap: var(--spacing-small);
+  grid-template-rows: masonry;*/
+}
+
+.chapter{
+  border-color: aquamarine;
+  border: 1rem;
+  /*background-color: var(--secondary-color);*/
+  
+  display: flex;
+  margin: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  float: left;
+  border: solid var(--border-color);
+
+  color: var(--chap-text-color);
+  font-size: large;
+  font-weight:600;
+
+  /* from quran.com website */
+  border: 2px solid var(--color-borders-hairline);
+    
+  padding-block-start: var(--spacing-medium);
+  padding-block-end: var(--spacing-medium);
+  padding-inline-start: var(--spacing-large);
+  padding-inline-end: var(--spacing-large);
+  border-radius: var(--border-radius-default);
+
+  background: var(--secondary-color);
+  background: linear-gradient(180deg, var(--secondary-color) 0%, rgb(0, 150, 150) 100%);
+
+
+}
+
+.chapter:hover {
+  border: 2px solid var(--color-borders-highlight);
+  color: var(--color-highlight);
+  background: linear-gradient(180deg, var(--secondary-color) 0%, rgb(0, 150, 150) 100%);
+
+}
+
+.footer {
+  text-align: center;
+  color: var(--foot-text-color);
+  background-color:var(--bg-color);
+  justify-content: center;
+  display: flex;
+  margin: auto;
+
+}
+
+
+hr {
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  border-color: var(--foot-text-color);
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.mainHeader{
+  justify-items: center;
+  display: grid;
+  
+}
+
+
+
+/*.table {
+  border: 1px solid black;
+  border-radius: 10px;
+}*/
