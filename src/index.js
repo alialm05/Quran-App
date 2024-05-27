@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { createRoot } from 'react-dom/client';
+//import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.js'
 
@@ -10,12 +11,16 @@ import './index.css'; // imports css to react component
 
 // XML component dependencies
 import Header from './AppHeader' // cmponent must be capitalized
+import Home from './Home.js' // cmponent must be capitalized
 import Footer from './Footer'
-import AppContent from './AppContent'
+import AppContent from './Chapters.js'
+//import AppRouting from './AppRouting';
+import App from './App.js'
+import { Route, Router, Routes, Link } from 'react-router-dom';
 
-class App extends Component {
+class App0 extends Component { // Doesnt work in same script
 
-  constructor(props){ // 'lifting the state', make it visible the state for other components
+  /*constructor(props){ // 'lifting the state', make it visible the state for other components
     super(props);
     this.handlePostChange = this.handlePostChange.bind(this)
     this.state = {
@@ -28,10 +33,10 @@ class App extends Component {
     this.setState({
       chapters: chapters
     })
-  }
+  }*/
 
   render(){
-    
+
     const HeaderProps = {
       title: "Quran App",
       author: "Aloushie",
@@ -40,19 +45,36 @@ class App extends Component {
     }
     
     return ( // XML uses className instead of class
-    <div className='app'>
-      
-      <div>
+    <Router>
+      <div className='app'>
       <Header {...HeaderProps}/>
-      <AppContent handlePostChange={this.handlePostChange} chapters = {this.state.chapters}/>
+
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <ul className="navbar-nav mr-auto">
+            <li><Link to={'/'} className="nav-link"> Home </Link></li>
+            <li><Link to={'/chapters'} className="nav-link">Content</Link></li>
+          </ul>
+      </nav>
+
+      <div className='mainContent'>
+        <Routes>
+          <Route exact path='/' Component={Home}/>
+          <Route exact path='/chapters' element={<AppContent/>}/>
+        </Routes>
+        {/*<AppContent handlePostChange={this.handlePostChange} chapters = {this.state.chapters}/>*/}
+        
       </div>
+
       <Footer {...HeaderProps}/>
     
     </div>
+    </Router>
+   
     
   )
 }
 }
+
 
 const root = createRoot(document.getElementById('root'));
 root.render(<App/>)

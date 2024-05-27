@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+//import { Link } from 'react-router-dom';
 // fragment needed for xml
 
 export default class Header extends Component {
@@ -24,7 +25,21 @@ export default class Header extends Component {
                   Listen to Recitations for free
               </p>
 
-          </div>            
+            {/*<nav className='nav'>
+              <ul className='list-group'>
+                <li className='list-group'>
+                  <Link to="/">
+                  Home
+                  </Link>
+                </li>
+              </ul>
+        </nav>*/}
+
+
+          
+          </div>
+
+
   
         )
 

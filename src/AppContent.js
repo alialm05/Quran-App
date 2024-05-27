@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from 'axios'
+//import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 let config = {
   method: 'get',
@@ -18,19 +19,22 @@ export default class AppContent extends Component {
     constructor(props){ // init function
         super(props);
         this.handlePostChange = this.handlePostChange.bind(this)
-        this.getList()
       }
     
       handlePostChange(chapters) {
         this.props.handlePostChange(chapters);
       }
 
-    //state = {chapters: [], reciter: 1};// local state
+    state = {chapters: [], reciter: 1};// local state
 
     /*constructor(props) {
         super(props);
         this.listRef = React.createRef();
     }*/
+
+    componentDidMount(){
+        this.getList()
+    }
 
     getList = () =>{ // arrow syntax so it can access other funcs in same class
         
@@ -73,9 +77,10 @@ export default class AppContent extends Component {
             })
         
             setTimeout(() => {
-                //this.setState({chapters: allChaps})
-                this.handlePostChange(allChaps)    
+                this.setState({chapters: allChaps})
+                //this.handlePostChange(allChaps)    
                 console.log("set state")
+                console.log(this.state)
             }, 500)
         
         })
@@ -94,17 +99,17 @@ export default class AppContent extends Component {
         //this.getList();
 
         return(
-            <div>
+                <div>
 
                 {/*<button className="btn-primary">
                     <a href='https://www.youtube.com' target="_blank" rel="noreferrer">
                     </a>
                     button 1
                 </button>*/}
-            
+
                 <div className="table">
 
-                    {this.props.chapters.map((c) => (
+                    {this.state.chapters.map((c) => (
                         <a href = {c.audioUrl} rel= 'noreferrer' target="_blank" onClick={() => this.clickedItm(c.audioUrl)}>
                         <div key={c.id} className="chapter">
                             {c.name_simple} | {c.name_arabic}
@@ -115,7 +120,8 @@ export default class AppContent extends Component {
 
                 </div>
 
-            </div>
+                </div>
+            
                 
         );
     }
