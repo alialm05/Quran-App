@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import AppContent from './AppContent'
+//import AppContent from './AppContent'
 
 import './index.css'
 
